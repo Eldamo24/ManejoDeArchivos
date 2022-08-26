@@ -6,6 +6,15 @@ Si el fichero no existe debe mostrar un mensaje por pantalla informando de ello.
 """
 
 def mostrarLinea(numN, numM):
+    with open(f"tabla{numN}.txt", "r") as archivo:
+        try:
+            print(archivo.readlines()[numM])
+        except IndexError as ex:
+            print(f"Indice inexistente: {ex}")
+        except Exception as ex:
+            print(f"Excepcion inesperada: {ex}")
+
+"""
     try:
         archivo = open(f"tabla{numN}.txt", "r")
         print(archivo.readlines()[numM])
@@ -13,10 +22,12 @@ def mostrarLinea(numN, numM):
         print(f"El archivo no se encontro: {ex}")
     except IndexError as ex:
         print(f"Indice inexistente: {ex}")
+        archivo.close()
     except Exception as ex:
         print(f"Ocurrio un error inesperado... {ex}")
-    else:
         archivo.close()
+    else:
+        archivo.close()"""
 
 
 try:
